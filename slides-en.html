@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JanBark Technologies — Partner Deck 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* ===================================================
+   JanBark Technologies · Electronic Partner Deck
+   GGIC 2026 · Guangzhou · Oct 22
+   =================================================== */
+:root {
+  --navy:    #080D1A;
+  --navy2:   #0F1729;
+  --navy3:   #141E35;
+  --teal:    #00D4C8;
+  --teal2:   #00A89E;
+  --gold:    #F5A623;
+  --rose:    #FF6B6B;
+  --purple:  #8B5CF6;
+  --white:   #EEF2FF;
+  --muted:   #7A88A8;
+  --border:  rgba(0,212,200,0.15);
+  --card:    rgba(20,30,53,0.9);
+
+  --font-d:  'Bebas Neue', Impact, sans-serif;
+  --font-b:  'Inter', system-ui, sans-serif;
+  --font-m:  'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: var(--font-b);
+  background: #04080F;
+}
+
+/* ─── Navigation ─── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 52px;
+  background: rgba(8,13,26,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+  font-family: var(--font-d);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-brand-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-counter {
+  font-family: var(--font-m);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  min-width: 48px;
+  text-align: center;
+}
+
+.nav-btn {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.15s;
+}
+.nav-btn:hover { background: rgba(0,212,200,0.1); border-color: var(--teal); }
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ─── Progress bar ─── */
+#progress {
+  position: fixed;
+  top: 52px; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+  z-index: 100;
+}
+#progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--teal2));
+  transition: width 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── Slide container ─── */
+#deck {
+  position: fixed;
+  top: 54px; bottom: 0; left: 0; right: 0;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(60px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+.slide.exit {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+/* ─── Dot navigation ─── */
+#dots {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dot.active { background: var(--teal); width: 20px; border-radius: 3px; }
+
+/* ──────────────────────────────────
+   SLIDE 1: COVER
+────────────────────────────────── */
+.s1-wrap {
+  flex: 1;
+  position: relative;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: calc(100vh - 54px);
+}
+
+.s1-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 80% 20%, rgba(0,212,200,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 60% at 15% 85%, rgba(245,166,35,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(139,92,246,0.04) 0%, transparent 60%);
+}
+
+.s1-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,200,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,200,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.s1-content {
+  position: relative;
+  text-align: center;
+  padding: 48px 32px;
+  max-width: 700px;
+}
+
+.s1-eyebrow {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.s1-eyebrow::before, .s1-eyebrow::after {
+  content: '';
+  width: 40px; height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.s1-company {
+  font-family: var(--font-d);
+  font-size: clamp(48px, 10vw, 96px);
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.s1-company span { color: var(--teal); }
+
+.s1-sub {
+  font-family: var(--font-d);
+  font-size: clamp(16px, 3vw, 26px);
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+.s1-deck-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(238,242,255,0.7);
+  background: rgba(0,212,200,0.08);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 24px;
+  display: inline-block;
+  margin-bottom: 48px;
+  letter-spacing: 0.04em;
+}
+
+.s1-stats {
+  display: flex;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.s1-stat {
+  flex: 1;
+  background: var(--navy2);
+  padding: 20px 16px;
+  text-align: center;
+}
+.s1-stat-n {
+  font-family: var(--font-d);
+  font-size: clamp(24px, 4vw, 38px);
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.s1-stat-l {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.s1-conf-tag {
+  position: absolute;
+  top: 20px; right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.conf-pill {
+  background: var(--teal);
+  color: var(--navy);
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  border-radius: 3px;
+}
+.conf-sub {
+  font-family: var(--font-m);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+}
+
+/* ──────────────────────────────────
+   SHARED SLIDE CHROME
+────────────────────────────────── */
+.slide-chrome {
+  flex: 1;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 48px 60px;
+  min-height: calc(100vh - 54px);
+}
+
+.slide-tag {
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.slide-tag::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 120px;
+}
+
+.slide-h {
+  font-family: var(--font-d);
+  font-size: clamp(30px, 5vw, 52px);
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 10px;
+  text-wrap: balance;
+  line-height: 0.95;
+}
+.slide-h span { color: var(--teal); }
+.slide-h em { color: var(--gold); font-style: normal; }
+
+.slide-lead {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 600px;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+/* ──────────────────────────────────
+   SLIDE 2: WHO WE ARE
+────────────────────────────────── */
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 640px) { .who-grid { grid-template-columns: 1fr; } }
+
+.who-card {
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+.who-card-icon {
+  font-size: 24px;
+  margin-bottom: 12px;
+  display: block;
+}
+.who-card-title {
+  font-family: var(--font-d);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.who-card-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.who-card-stat {
+  margin-top: 12px;
+  font-family: var(--font-m);
+  font-size: 10px;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+}
+
+.who-mission {
+  background: linear-gradient(135deg, rgba(0,212,200,0.07), transparent);
+  border: 1px solid rgba(0,212,200,0.2);
+  border-radius: 8px;
+  padding: 24px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.who-mission-q {
+  font-family: var(--font-d);
+  font-size: 64px;
+  color: var(--teal);
+  line-height: 0.7;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.who-mission-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.6;
+}
+.who-mission-text em {
+  font-style: normal;
+  color: var(--teal);
+}
+
+/* ──────────────────────────────────
+   SLIDE 3: MOBILE GAMES PORTFOLIO
+────────────────────────────────── */
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+.portfolio-table th {
+  font-family: var(--font-m);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.portfolio-table td {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top;
+}
+.portfolio-table td.game-name {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 12.5px;
+}
+.portfolio-table .badge-tag {
+  display: inline-block;
+  font-family: var(--font-m);
+  font-size: 8.5px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+}
+.badge-tag.action { background: rgba(255,107,107,0.15); color: #FF6B6B; }
+.badge-tag.casual { background: rgba(0,212,200,0.12); color: var(--teal); }
+.badge-tag.puzzle { background: rgba(139,92,246,0.15); color: var(--purple); }
+.badge-tag.sim    { background: rgba(245,166,35,0.15); color: var(--gold); }
+.badge-tag.util   { background: rgba(99,179,237,0.15); color: #63B3ED; }
+
+.dl-highlight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 4px;
+}
+.dl-card {
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+}
+.dl-card-num {
+  font-family: var(--font-d);
+  font-size: 28px;
+  color: var(--teal);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.dl-card-lbl {
+  font-size: 9.5px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.dl-card-game {
+  font-size: 10px;
+  color: rgba(238,242,255,0.5);
+  margin-top: 4px;
+}
+
+/* ──────────────────────────────────
+   SLIDE 4: HTML5 GAMES (GameMonetize)
+────────────────────────────────── */
+.html5-hero {
+  background: linear-gradient(135deg, rgba(0,212,200,0.05), transparent 60%);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.html5-count {
+  font-family: var(--font-d);
+  font-size: 72px;
+  color: var(--teal);
+  line-height: 0.85;
+}
+.html5-count-sub {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+.html5-desc {
+  flex: 1;
+  min-width: 200px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.genre-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.genre-chip {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--muted);
+  background: var(--navy3);
+}
+.genre-chip.active {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(0,212,200,0.08);
+}
+
+.games-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+.game-tile {
+  background: var(--navy3);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 12px;
+  transition: border-color 0.2s;
+}
+.game-tile:hover { border-color: var(--border); }
+.game-tile-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+.game-tile-genre {
+  font-family: var(--font-m);
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* ──────────────────────────────────
+   SLIDE 5: REVENUE SHARE MODEL
+────────────────────────────────── */
+.deal-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.deal-big-num {
+  font-family: var(--font-d);
+  font-size: clamp(80px, 18vw, 150px);
+  line-height: 0.85;
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+.deal-big-label {
+  font-family: var(--font-m);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.deal-split-vis {
+  width: 100%;
+  max-width: 420px;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--teal) 50%, rgba(255,255,255,0.12) 50%);
+  margin-bottom: 8px;
+}
+.deal-split-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 420px;
+}
+.deal-split-label {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.deal-split-label.ours { color: var(--teal); }
+
+.deal-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 640px) { .deal-cards { grid-template-columns: 1fr; } }
+
+.deal-card2 {
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.deal-card2.featured { border-color: var(--teal); background: linear-gradient(135deg, rgba(0,212,200,0.07), var(--navy3) 60%); }
+.deal-card2-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+.deal-card2-title {
+  font-family: var(--font-d);
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.deal-card2.featured .deal-card2-title { color: var(--teal); }
+.deal-card2-body {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ──────────────────────────────────
+   SLIDE 6: WHY PARTNER
+────────────────────────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 600px) { .why-grid { grid-template-columns: 1fr; } }
+
+.why-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.why-num {
+  font-family: var(--font-d);
+  font-size: 36px;
+  color: rgba(0,212,200,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.why-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.why-body {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.conference-callout {
+  background: linear-gradient(135deg, rgba(245,166,35,0.06), transparent);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.conf-icon { font-size: 32px; flex-shrink: 0; }
+.conf-info {}
+.conf-title {
+  font-family: var(--font-d);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.conf-detail {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ──────────────────────────────────
+   SLIDE 7: CTA / CONTACT
+────────────────────────────────── */
+.cta-wrap {
+  flex: 1;
+  position: relative;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 48px 32px 80px;
+  min-height: calc(100vh - 54px);
+  overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,212,200,0.07) 0%, transparent 60%);
+}
+
+.cta-eyebrow {
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cta-title {
+  font-family: var(--font-d);
+  font-size: clamp(38px, 9vw, 84px);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 8px;
+  position: relative;
+}
+.cta-title span { color: var(--teal); }
+
+.cta-sub {
+  font-family: var(--font-d);
+  font-size: clamp(18px, 3.5vw, 30px);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.cta-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 680px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.cta-contact-card {
+  background: var(--navy3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+}
+.cta-cc-label {
+  font-family: var(--font-m);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.cta-cc-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.cta-bottom {
+  position: relative;
+  font-family: var(--font-m);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* ─── Keyboard hint ─── */
+.key-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  font-family: var(--font-m);
+  font-size: 9px;
+  color: rgba(122,136,168,0.4);
+  letter-spacing: 0.1em;
+  z-index: 100;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── TOP NAV ─── -->
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    JANBARK TECHNOLOGIES
+  </div>
+  <div class="nav-controls">
+    <button class="nav-btn" id="prev-btn" onclick="changeSlide(-1)" disabled>←</button>
+    <span class="nav-counter" id="counter">1 / 7</span>
+    <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">→</button>
+  </div>
+</nav>
+
+<!-- Progress bar -->
+<div id="progress"><div id="progress-fill"></div></div>
+
+<!-- ─── DECK ─── -->
+<div id="deck">
+
+  <!-- ══ SLIDE 1 · COVER ══ -->
+  <div class="slide active" id="slide-0">
+    <div class="s1-wrap">
+      <div class="s1-bg"></div>
+      <div class="s1-grid"></div>
+
+      <div class="s1-conf-tag">
+        <span class="conf-pill">GGIC 2026</span>
+        <span class="conf-sub">OCT 22 · GUANGZHOU</span>
+      </div>
+
+      <div class="s1-content">
+        <div class="s1-eyebrow">Publisher & Partner Deck</div>
+        <div class="s1-company">JANBARK<br><span>TECHNOLOGIES</span></div>
+        <div class="s1-sub">Global Game Studio</div>
+        <div class="s1-deck-title">Partnership Opportunity · Revenue Share Collaboration</div>
+
+        <div class="s1-stats">
+          <div class="s1-stat">
+            <div class="s1-stat-n">100+</div>
+            <div class="s1-stat-l">HTML5 Titles</div>
+          </div>
+          <div class="s1-stat">
+            <div class="s1-stat-n">3</div>
+            <div class="s1-stat-l">Play Store Accts</div>
+          </div>
+          <div class="s1-stat">
+            <div class="s1-stat-n">15M+</div>
+            <div class="s1-stat-l">Total Downloads</div>
+          </div>
+          <div class="s1-stat">
+            <div class="s1-stat-n">50/50</div>
+            <div class="s1-stat-l">Rev Share</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 2 · WHO WE ARE ══ -->
+  <div class="slide" id="slide-1">
+    <div class="slide-chrome">
+      <div class="slide-tag">About Us</div>
+      <div class="slide-h">Who We <span>Are</span></div>
+      <div class="slide-lead">JanBark Technologies is a cross-platform game developer operating across Android mobile and HTML5 web — building a diverse catalogue of casual, hyper-casual, and utility titles for a global audience.</div>
+
+      <div class="who-grid">
+        <div class="who-card">
+          <span class="who-card-icon">📱</span>
+          <div class="who-card-title">Mobile (Android)</div>
+          <div class="who-card-body">Three active Google Play developer accounts — Key Games LTD, App Tech Solutions, and gamesodo — collectively covering action, racing, puzzle, relaxation, simulation, and productivity genres.</div>
+          <div class="who-card-stat">→ 3 developer accounts · 30+ live apps</div>
+        </div>
+        <div class="who-card">
+          <span class="who-card-icon">🌐</span>
+          <div class="who-card-title">HTML5 Web Games</div>
+          <div class="who-card-body">100+ HTML5 titles distributed through GameMonetize, covering hyper-casual, ASMR, runner, puzzle, shooter, idle, and simulation categories — instantly embeddable on any gaming portal.</div>
+          <div class="who-card-stat">→ 100+ titles · gamemonetize.com/JanBarkTechnologies</div>
+        </div>
+        <div class="who-card">
+          <span class="who-card-icon">🌍</span>
+          <div class="who-card-title">Global Audience</div>
+          <div class="who-card-body">Our top mobile title — Antistress: Relaxing Toy Games — has surpassed 10 million downloads. Combined downloads across all accounts exceed 15 million globally.</div>
+          <div class="who-card-stat">→ 10M+ downloads on flagship title</div>
+        </div>
+        <div class="who-card">
+          <span class="who-card-icon">🚀</span>
+          <div class="who-card-title">Active Pipeline</div>
+          <div class="who-card-body">Continuous development pipeline with new titles releasing regularly. Partners gain access to upcoming releases, beta builds, and priority co-development opportunities.</div>
+          <div class="who-card-stat">→ Ongoing release cadence · GGIC 2026 exhibitor</div>
+        </div>
+      </div>
+
+      <div class="who-mission">
+        <div class="who-mission-q">"</div>
+        <div class="who-mission-text">We build games at scale. We need partners who can <em>amplify</em> them at scale. Our proposition is simple: you bring the audience, we bring the content — and we share the upside <em>equally</em>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 3 · MOBILE PORTFOLIO ══ -->
+  <div class="slide" id="slide-2">
+    <div class="slide-chrome">
+      <div class="slide-tag">Mobile Portfolio</div>
+      <div class="slide-h">Android <span>Games & Apps</span></div>
+      <div class="slide-lead">Three Google Play developer accounts covering six major genres, with live titles from casual puzzles to action-packed simulators.</div>
+
+      <table class="portfolio-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Developer Account</th>
+            <th>Genre</th>
+            <th>Downloads</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="game-name">Antistress: Relaxing Toy Games</td>
+            <td>Mishi Games Studio</td>
+            <td><span class="badge-tag casual">Relaxing</span></td>
+            <td>10M+</td>
+          </tr>
+          <tr>
+            <td class="game-name">Bus Driving Games: Bus Driver</td>
+            <td>Mishi Games Studio</td>
+            <td><span class="badge-tag sim">Simulation</span></td>
+            <td>5M+</td>
+          </tr>
+          <tr>
+            <td class="game-name">Antistress: Mini Relaxing Game</td>
+            <td>gamesodo</td>
+            <td><span class="badge-tag casual">Relaxing</span></td>
+            <td>1M+</td>
+          </tr>
+          <tr>
+            <td class="game-name">Spider Rope Hero – Crime City</td>
+            <td>Key Games LTD</td>
+            <td><span class="badge-tag action">Action</span></td>
+            <td>100K+</td>
+          </tr>
+          <tr>
+            <td class="game-name">AI Assistant for Everyday Life</td>
+            <td>gamesodo</td>
+            <td><span class="badge-tag util">AI / Utility</span></td>
+            <td>100K+</td>
+          </tr>
+          <tr>
+            <td class="game-name">Color Sort – Water Sort Puzzle</td>
+            <td>gamesodo</td>
+            <td><span class="badge-tag puzzle">Puzzle</span></td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td class="game-name">Escape Block – Jam Puzzle</td>
+            <td>App Tech Solutions</td>
+            <td><span class="badge-tag puzzle">Puzzle</span></td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td class="game-name">4x4 Offroad Jeep Driving</td>
+            <td>App Tech Solutions</td>
+            <td><span class="badge-tag sim">Simulation</span></td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td class="game-name">FPS Shooting Games: Gun Game</td>
+            <td>Key Games LTD</td>
+            <td><span class="badge-tag action">Action</span></td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td class="game-name">NoteWave: AI Voice Transcriber</td>
+            <td>App Tech Solutions</td>
+            <td><span class="badge-tag util">AI / Utility</span></td>
+            <td>Active</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="dl-highlight">
+        <div class="dl-card">
+          <div class="dl-card-num">10M+</div>
+          <div class="dl-card-lbl">Downloads</div>
+          <div class="dl-card-game">Antistress: Relaxing Toy Games</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-num">5M+</div>
+          <div class="dl-card-lbl">Downloads</div>
+          <div class="dl-card-game">Bus Driving Games: Bus Driver</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-num">1M+</div>
+          <div class="dl-card-lbl">Downloads</div>
+          <div class="dl-card-game">Antistress: Mini Relaxing Game</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 4 · HTML5 GAMES ══ -->
+  <div class="slide" id="slide-3">
+    <div class="slide-chrome">
+      <div class="slide-tag">HTML5 Catalogue</div>
+      <div class="slide-h"><span>100+</span> HTML5 Games <em>Live Now</em></div>
+      <div class="slide-lead">Available on GameMonetize and ready for instant embed on any gaming portal, content platform, or distribution network. Zero integration friction.</div>
+
+      <div class="html5-hero">
+        <div>
+          <div class="html5-count">100+</div>
+          <div class="html5-count-sub">HTML5 Titles · Live on GameMonetize</div>
+        </div>
+        <div class="html5-desc">
+          Every title is built for the web — instant load, no download required. Partners can embed our full catalogue or curate a branded selection. Ad revenue is shared 50/50 from day one. Titles span hyper-casual, ASMR, puzzle, runner, shooter, idle, and simulation.
+        </div>
+      </div>
+
+      <div class="genre-chips">
+        <div class="genre-chip active">🎮 Hyper-Casual</div>
+        <div class="genre-chip active">😌 ASMR / Relaxing</div>
+        <div class="genre-chip active">🧩 Puzzle</div>
+        <div class="genre-chip active">🏃 Runner</div>
+        <div class="genre-chip active">🔫 Shooter</div>
+        <div class="genre-chip active">🏙 Idle / Tycoon</div>
+        <div class="genre-chip active">🚜 Simulation</div>
+        <div class="genre-chip active">🎯 Sports / Skill</div>
+      </div>
+
+      <div class="games-scroll">
+        <div class="game-tile"><div class="game-tile-name">Jelly Garden Game</div><div class="game-tile-genre">Puzzle</div></div>
+        <div class="game-tile"><div class="game-tile-name">ASMR Fun Relaxing Games</div><div class="game-tile-genre">ASMR</div></div>
+        <div class="game-tile"><div class="game-tile-name">School Bus Simulator 3D</div><div class="game-tile-genre">Simulation</div></div>
+        <div class="game-tile"><div class="game-tile-name">Tank Force Battle Game</div><div class="game-tile-genre">Action</div></div>
+        <div class="game-tile"><div class="game-tile-name">Idle City</div><div class="game-tile-genre">Idle / Tycoon</div></div>
+        <div class="game-tile"><div class="game-tile-name">Air Combat Jet Fighter</div><div class="game-tile-genre">Action</div></div>
+        <div class="game-tile"><div class="game-tile-name">Water Sort Brain Puzzle</div><div class="game-tile-genre">Puzzle</div></div>
+        <div class="game-tile"><div class="game-tile-name">Police Chase Car Simulator</div><div class="game-tile-genre">Simulation</div></div>
+        <div class="game-tile"><div class="game-tile-name">Fruit Slicer Fun</div><div class="game-tile-genre">Casual</div></div>
+        <div class="game-tile"><div class="game-tile-name">Zombie Shooter Sniper Game</div><div class="game-tile-genre">Shooter</div></div>
+        <div class="game-tile"><div class="game-tile-name">Tall Man Run 3D</div><div class="game-tile-genre">Runner</div></div>
+        <div class="game-tile"><div class="game-tile-name">Merge Animals Defence</div><div class="game-tile-genre">Strategy</div></div>
+        <div class="game-tile"><div class="game-tile-name">Color Ball Rush</div><div class="game-tile-genre">Hyper-Casual</div></div>
+        <div class="game-tile"><div class="game-tile-name">Bubble Shooter Relaxing</div><div class="game-tile-genre">Puzzle</div></div>
+        <div class="game-tile"><div class="game-tile-name">Idle Restaurant Game</div><div class="game-tile-genre">Idle</div></div>
+        <div class="game-tile"><div class="game-tile-name">Run Rich Path 3D</div><div class="game-tile-genre">Runner</div></div>
+        <div class="game-tile"><div class="game-tile-name">Rainbow Monster Survival</div><div class="game-tile-genre">Action</div></div>
+        <div class="game-tile"><div class="game-tile-name">Offroad Truck Driving</div><div class="game-tile-genre">Simulation</div></div>
+        <div class="game-tile"><div class="game-tile-name">Stickman Trivia Fall IO</div><div class="game-tile-genre">IO / Party</div></div>
+        <div class="game-tile"><div class="game-tile-name">+ 80 More Titles</div><div class="game-tile-genre">All Genres</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 5 · 50/50 MODEL ══ -->
+  <div class="slide" id="slide-4">
+    <div class="slide-chrome">
+      <div class="slide-tag">Partnership Model</div>
+      <div class="slide-h">The <span>50/50</span> Revenue Share</div>
+      <div class="slide-lead">One simple deal structure. You market, we build. Revenue splits equally — no upfront fees, no complex royalty tiers. Every download, every ad impression, every in-app purchase: half yours.</div>
+
+      <div class="deal-center">
+        <div class="deal-big-num">50/50</div>
+        <div class="deal-big-label">Revenue Share · All Channels · All Monetisation</div>
+        <div class="deal-split-vis"></div>
+        <div class="deal-split-labels">
+          <span class="deal-split-label ours">Partner: 50%</span>
+          <span class="deal-split-label">JanBark: 50%</span>
+        </div>
+      </div>
+
+      <div class="deal-cards">
+        <div class="deal-card2 featured">
+          <span class="deal-card2-icon">📢</span>
+          <div class="deal-card2-title">Publisher / UA Partner</div>
+          <div class="deal-card2-body">Handle user acquisition, ad campaigns, store optimisation, and regional marketing. We provide full game assets, APKs, SDK support, and co-branded store listings. Revenue splits from all your marketing channels.</div>
+        </div>
+        <div class="deal-card2">
+          <span class="deal-card2-icon">🌐</span>
+          <div class="deal-card2-title">Portal / Distribution</div>
+          <div class="deal-card2-body">Embed our 100+ HTML5 titles on your gaming portal or content platform. Instantly embeddable, no download required. Programmatic ads and subscription models supported. Revenue from your platform.</div>
+        </div>
+        <div class="deal-card2">
+          <span class="deal-card2-icon">🤝</span>
+          <div class="deal-card2-title">Marketing Agency</div>
+          <div class="deal-card2-body">Bring your creative and media buying expertise to our game catalogue. We handle all development and updates; you drive the installs and brand visibility. Monthly transparent reporting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 6 · WHY PARTNER ══ -->
+  <div class="slide" id="slide-5">
+    <div class="slide-chrome">
+      <div class="slide-tag">Partnership Value</div>
+      <div class="slide-h">Why Partner <span>With Us</span></div>
+      <div class="slide-lead">No development risk. No waiting for a game to be built. A diverse catalogue, proven installs, and a fair split from day one.</div>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div>
+            <div class="why-title">Proven, Live Titles</div>
+            <div class="why-body">No prototypes. Every game in our catalogue is live on the Play Store or GameMonetize, with real users and real ratings. The 10M+ download Antistress franchise proves the market exists.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div>
+            <div class="why-title">Multi-Platform Ready</div>
+            <div class="why-body">Android mobile AND HTML5 web in one partnership. Reach mobile users through Play Store + web users through your gaming portal simultaneously, maximising your audience coverage.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div>
+            <div class="why-title">Zero Development Wait</div>
+            <div class="why-body">100+ HTML5 titles available for immediate embed. Mobile titles ready to market today. No waiting for a development team to finish building — you can start driving revenue in days, not months.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div>
+            <div class="why-title">Simple, Fair Deal</div>
+            <div class="why-body">50/50 revenue share is the whole deal. No setup fees, no minimum commitments, no complex royalty tiers. Monthly transparent reporting, dedicated account support, and flexible contract terms.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">05</div>
+          <div>
+            <div class="why-title">Diverse Genre Coverage</div>
+            <div class="why-body">From ASMR and relaxation (10M downloads) to action shooters, racing sims, idle tycoons, and AI utility apps — enough variety to match any partner's audience demographics and ad inventory needs.</div>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">06</div>
+          <div>
+            <div class="why-title">Active & Growing</div>
+            <div class="why-body">We're actively releasing new titles. Partners gain early access to upcoming games, influencing marketing strategy pre-launch. Our pipeline means the portfolio keeps growing as the partnership deepens.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conference-callout">
+        <div class="conf-icon">🏆</div>
+        <div class="conf-info">
+          <div class="conf-title">JanBark is an Exhibitor at GGIC 2026</div>
+          <div class="conf-detail">Meet us at the Global Game Industry CEO Conference · October 22, 2026 · Guangzhou 雅高瑞士酒店 (Fairmont/Accor Swiss Hotel) · Alongside 1,000+ global game industry leaders from 300+ companies including Garena, Nexon Korea, CrazyGames, FUNPLUS and more.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 7 · CONTACT / CTA ══ -->
+  <div class="slide" id="slide-6">
+    <div class="cta-wrap">
+      <div class="cta-bg"></div>
+      <div class="cta-eyebrow">Let's Build Together</div>
+      <div class="cta-title">READY TO<br><span>PARTNER?</span></div>
+      <div class="cta-sub">Meet Us at GGIC 2026 · Oct 22 · Guangzhou</div>
+
+      <div class="cta-contact-grid">
+        <div class="cta-contact-card">
+          <div class="cta-cc-label">Email</div>
+          <div class="cta-cc-value">haseeb87@yahoo.com</div>
+        </div>
+        <div class="cta-contact-card">
+          <div class="cta-cc-label">Google Play — Mobile Games</div>
+          <div class="cta-cc-value">Key Games LTD<br>App Tech Solutions<br>gamesodo</div>
+        </div>
+        <div class="cta-contact-card">
+          <div class="cta-cc-label">HTML5 Games (100+ Titles)</div>
+          <div class="cta-cc-value">gamemonetize.com<br>/games?company=<br>JanBarkTechnologies</div>
+        </div>
+      </div>
+
+      <div class="cta-bottom">© 2026 JanBark Technologies · GGIC 2026 · Guangzhou · October 22</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Dot nav -->
+<div id="dots">
+  <div class="dot active" onclick="goTo(0)"></div>
+  <div class="dot" onclick="goTo(1)"></div>
+  <div class="dot" onclick="goTo(2)"></div>
+  <div class="dot" onclick="goTo(3)"></div>
+  <div class="dot" onclick="goTo(4)"></div>
+  <div class="dot" onclick="goTo(5)"></div>
+  <div class="dot" onclick="goTo(6)"></div>
+</div>
+
+<div class="key-hint">← → ARROW KEYS</div>
+
+<script>
+const TOTAL = 7;
+let current = 0;
+let transitioning = false;
+
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dots   = Array.from(document.querySelectorAll('.dot'));
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const counter = document.getElementById('counter');
+const progressFill = document.getElementById('progress-fill');
+
+function updateNav() {
+  counter.textContent = `${current + 1} / ${TOTAL}`;
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === TOTAL - 1;
+  progressFill.style.width = `${((current + 1) / TOTAL) * 100}%`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+function goTo(idx) {
+  if (transitioning || idx === current || idx < 0 || idx >= TOTAL) return;
+  transitioning = true;
+  const dir = idx > current ? 1 : -1;
+
+  // Exit current
+  slides[current].classList.remove('active');
+  slides[current].classList.add('exit');
+  // If going back, offset was positive (came from right), going forward exit to left
+
+  const old = current;
+  current = idx;
+
+  // Prepare incoming: position it off-screen in the right direction
+  slides[current].style.transform = `translateX(${dir * 60}px)`;
+  slides[current].style.opacity = '0';
+  slides[current].classList.add('active');
+
+  // Force reflow
+  slides[current].getBoundingClientRect();
+
+  // Animate in
+  slides[current].style.transform = '';
+  slides[current].style.opacity = '';
+
+  updateNav();
+
+  setTimeout(() => {
+    slides[old].classList.remove('exit');
+    slides[old].style.transform = '';
+    transitioning = false;
+  }, 420);
+}
+
+function changeSlide(dir) {
+  goTo(current + dir);
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+  else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+});
+
+// Touch swipe
+let touchStart = null;
+document.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  if (touchStart === null) return;
+  const dx = e.changedTouches[0].clientX - touchStart;
+  if (Math.abs(dx) > 50) changeSlide(dx < 0 ? 1 : -1);
+  touchStart = null;
+});
+
+updateNav();
+</script>
+</body>
+</html>

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JanBark Technologies — GGIC 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* ============================================================
+   DESIGN PLAN
+   Layout: Two-column A4 brochure — cover + 3 content panels
+   Color: Deep navy base, electric teal accent, warm off-white text
+   Type: Bebas Neue display / Inter body / JetBrains Mono data
+   ============================================================ */
+:root {
+  --navy:    #0A0F1E;
+  --navy2:   #111827;
+  --teal:    #00D4C8;
+  --teal2:   #00A89E;
+  --gold:    #F5A623;
+  --white:   #F0F4FF;
+  --muted:   #8B96B0;
+  --card-bg: #141C2F;
+  --border:  rgba(0,212,200,0.18);
+
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: #1a1a2e; }
+body {
+  font-family: var(--font-body);
+  background: #1a1a2e;
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+/* ── Page wrapper ── */
+.page {
+  width: 100%;
+  max-width: 900px;
+  background: var(--navy);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+}
+
+/* ══════════════════════════════════════════
+   COVER PAGE
+══════════════════════════════════════════ */
+.cover {
+  position: relative;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.cover-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(0,212,200,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(245,166,35,0.08) 0%, transparent 50%),
+    linear-gradient(160deg, #0A0F1E 0%, #0d1525 50%, #0A0F1E 100%);
+}
+
+/* Grid lines decoration */
+.cover-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,200,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,200,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Circuit dots */
+.cover-dots {
+  position: absolute;
+  top: 60px; right: 60px;
+  width: 200px; height: 200px;
+  opacity: 0.35;
+}
+
+.cover-label {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cover-label::before {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--teal);
+}
+
+.cover-title {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 88px);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.cover-title span { color: var(--teal); }
+
+.cover-sub {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 3vw, 26px);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+.cover-tagline {
+  position: relative;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  max-width: 420px;
+  line-height: 1.7;
+  border-left: 2px solid var(--teal);
+  padding-left: 16px;
+  margin-bottom: 40px;
+}
+
+.cover-badges {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,212,200,0.08);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 20px;
+  min-width: 100px;
+}
+.badge-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--teal);
+  line-height: 1;
+}
+.badge-lbl {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+  text-align: center;
+}
+
+.cover-conf {
+  position: absolute;
+  top: 40px; right: 40px;
+  text-align: right;
+}
+.conf-badge {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.conf-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  display: block;
+}
+
+/* ══════════════════════════════════════════
+   CONTENT SECTIONS
+══════════════════════════════════════════ */
+.section {
+  padding: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 200px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.section-title span { color: var(--teal); }
+
+.section-body {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+/* ── Portfolio grid ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.portfolio-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px 20px;
+  transition: border-color 0.2s;
+}
+.portfolio-card:hover { border-color: var(--teal); }
+
+.pc-category {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.pc-titles {
+  list-style: none;
+}
+.pc-titles li {
+  font-size: 11.5px;
+  color: var(--white);
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.4;
+}
+.pc-titles li:last-child { border-bottom: none; }
+
+.pc-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--teal);
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+}
+
+/* ── Stat row ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.stat-cell {
+  background: var(--card-bg);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--teal);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-lbl {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Partnership section ── */
+.deal-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+@media (max-width: 600px) { .deal-box { grid-template-columns: 1fr; } }
+
+.deal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+}
+.deal-card.featured {
+  border-color: var(--teal);
+  background: linear-gradient(135deg, rgba(0,212,200,0.08) 0%, var(--card-bg) 60%);
+}
+
+.deal-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.deal-card.featured .deal-title { color: var(--teal); }
+
+.deal-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.deal-split {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.split-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--teal) 50%, rgba(255,255,255,0.15) 50%);
+}
+.split-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--teal);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.deal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.deal-list li {
+  font-size: 11.5px;
+  color: var(--muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+.deal-list li::before {
+  content: '→';
+  color: var(--teal);
+  flex-shrink: 0;
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+/* ── Platform logos / developer accounts ── */
+.platform-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.platform-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+.platform-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.platform-icon.gp { background: #01875F; color: white; }
+.platform-icon.html5 { background: #E44D26; color: white; }
+
+.platform-info {}
+.platform-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--white);
+  display: block;
+}
+.platform-detail {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── CTA / Contact ── */
+.contact-section {
+  background: linear-gradient(135deg, rgba(0,212,200,0.06) 0%, transparent 60%);
+  border-top: 1px solid var(--border);
+  padding: 40px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.contact-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 34px);
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.contact-cta-title span { color: var(--teal); }
+
+.contact-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+}
+.contact-row-icon {
+  width: 28px; height: 28px;
+  background: rgba(0,212,200,0.1);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.contact-row-text {
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+}
+.contact-row-label {
+  color: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 1px;
+}
+
+.qr-box {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.qr-placeholder {
+  width: 90px; height: 90px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Faux QR grid */
+.qr-placeholder svg { width: 72px; height: 72px; }
+.qr-caption {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ── Footer bar ── */
+.footer-bar {
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  padding: 16px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.footer-conf {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--teal);
+  letter-spacing: 0.12em;
+}
+
+/* ── Print label ── */
+.print-note {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.15em;
+  margin-top: -24px;
+  margin-bottom: 8px;
+}
+
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; max-width: 100%; }
+  .print-note { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ COVER ══ -->
+  <div class="cover">
+    <div class="cover-bg"></div>
+    <div class="cover-grid"></div>
+
+    <!-- SVG decorative circuit in corner -->
+    <div class="cover-dots">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Circuit board style decoration -->
+        <circle cx="20" cy="20" r="3" fill="#00D4C8" opacity="0.8"/>
+        <circle cx="60" cy="20" r="3" fill="#00D4C8" opacity="0.5"/>
+        <circle cx="100" cy="20" r="3" fill="#00D4C8" opacity="0.3"/>
+        <circle cx="140" cy="20" r="3" fill="#00D4C8" opacity="0.6"/>
+        <circle cx="180" cy="20" r="3" fill="#00D4C8" opacity="0.4"/>
+        <circle cx="20" cy="60" r="3" fill="#00D4C8" opacity="0.4"/>
+        <circle cx="100" cy="60" r="5" fill="#00D4C8" opacity="0.7"/>
+        <circle cx="180" cy="60" r="3" fill="#00D4C8" opacity="0.3"/>
+        <circle cx="20" cy="100" r="3" fill="#00D4C8" opacity="0.6"/>
+        <circle cx="60" cy="100" r="3" fill="#00D4C8" opacity="0.3"/>
+        <circle cx="140" cy="100" r="3" fill="#00D4C8" opacity="0.5"/>
+        <circle cx="180" cy="100" r="5" fill="#F5A623" opacity="0.6"/>
+        <circle cx="60" cy="140" r="3" fill="#00D4C8" opacity="0.4"/>
+        <circle cx="100" cy="140" r="3" fill="#00D4C8" opacity="0.6"/>
+        <circle cx="180" cy="140" r="3" fill="#00D4C8" opacity="0.3"/>
+        <circle cx="20" cy="180" r="5" fill="#F5A623" opacity="0.5"/>
+        <circle cx="100" cy="180" r="3" fill="#00D4C8" opacity="0.4"/>
+        <circle cx="140" cy="180" r="3" fill="#00D4C8" opacity="0.7"/>
+        <!-- Lines -->
+        <line x1="20" y1="20" x2="60" y2="20" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="60" y1="20" x2="100" y2="20" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="100" y1="20" x2="140" y2="20" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="140" y1="20" x2="180" y2="20" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="100" y1="20" x2="100" y2="60" stroke="#00D4C8" stroke-width="0.5" opacity="0.5"/>
+        <line x1="20" y1="20" x2="20" y2="60" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="180" y1="20" x2="180" y2="60" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="20" y1="60" x2="100" y2="60" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="60" x2="180" y2="60" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="20" y1="60" x2="20" y2="100" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="180" y1="60" x2="180" y2="100" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="20" y1="100" x2="60" y2="100" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="140" y1="100" x2="180" y2="100" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="60" y1="100" x2="60" y2="140" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="60" y1="140" x2="100" y2="140" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="140" x2="100" y2="180" stroke="#00D4C8" stroke-width="0.5" opacity="0.3"/>
+        <line x1="100" y1="180" x2="140" y2="180" stroke="#00D4C8" stroke-width="0.5" opacity="0.4"/>
+        <line x1="180" y1="100" x2="180" y2="140" stroke="#F5A623" stroke-width="0.5" opacity="0.4"/>
+        <line x1="20" y1="100" x2="20" y2="180" stroke="#F5A623" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+    </div>
+
+    <!-- Conference badge top-right -->
+    <div class="cover-conf">
+      <span class="conf-badge">GGIC 2026</span>
+      <span class="conf-date">OCT 22 · GUANGZHOU</span>
+    </div>
+
+    <!-- Main cover content -->
+    <div class="cover-label">Publisher Partnership Opportunity</div>
+    <div class="cover-title">JANBARK<br><span>TECHNOLOGIES</span></div>
+    <div class="cover-sub">Global Game Portfolio</div>
+    <div class="cover-tagline">
+      A cross-platform game studio with 100+ titles across mobile and HTML5 — seeking publisher & marketing partners for a 50/50 revenue-share collaboration.
+    </div>
+
+    <div class="cover-badges">
+      <div class="badge">
+        <div class="badge-num">100+</div>
+        <div class="badge-lbl">HTML5 Titles</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">3</div>
+        <div class="badge-lbl">Play Store Accounts</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">15M+</div>
+        <div class="badge-lbl">Downloads</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">50/50</div>
+        <div class="badge-lbl">Rev Share</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PORTFOLIO SECTION ══ -->
+  <div class="section">
+    <div class="section-label">Our Portfolio</div>
+    <div class="section-title">Games & Apps <span>Across Every Genre</span></div>
+    <div class="section-body">
+      JanBark Technologies operates three Google Play developer accounts and an HTML5 catalogue on GameMonetize — covering casual, hyper-casual, action, simulation, puzzle, and productivity categories. Every title is live, monetised, and ready for publisher amplification.
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <div class="pc-category">🎮 Action / Fighting</div>
+        <ul class="pc-titles">
+          <li>Spider Rope Hero – Crime City</li>
+          <li>FPS Shooting Games: Gun Game</li>
+          <li>Gangster Games Crime Simulator</li>
+          <li>Street Fight: Beat Em Up</li>
+          <li>Shadow Combat</li>
+        </ul>
+        <div class="pc-count">Key Games LTD · Google Play</div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="pc-category">🏎 Racing / Driving</div>
+        <ul class="pc-titles">
+          <li>Bus Driving Games: Bus Driver</li>
+          <li>4x4 Offroad Jeep Driving</li>
+          <li>Bike Stunt: Extreme Racing</li>
+          <li>Police Chase Car Simulator</li>
+          <li>Drifty Race Challenge</li>
+        </ul>
+        <div class="pc-count">Mishi Games · Key Games LTD</div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="pc-category">🧩 Puzzle / Casual</div>
+        <ul class="pc-titles">
+          <li>Escape Block – Jam Puzzle</li>
+          <li>Tile Match Games – Tile Puzzle</li>
+          <li>Color Sort – Water Sort Puzzle</li>
+          <li>Nut Bolt Screw Puzzle</li>
+          <li>Word Search Game</li>
+        </ul>
+        <div class="pc-count">App Tech Solutions · gamesodo</div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="pc-category">😌 Relaxing / ASMR</div>
+        <ul class="pc-titles">
+          <li>Antistress: Relaxing Toy Games (10M+)</li>
+          <li>Antistress: Mini Relaxing Game (1M+)</li>
+          <li>ASMR Fun Relaxing Games</li>
+          <li>Pocket Stress Relief Games</li>
+          <li>No Stress Game Challenges</li>
+        </ul>
+        <div class="pc-count">gamesodo · App Tech Solutions</div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="pc-category">🏠 Simulation / Idle</div>
+        <ul class="pc-titles">
+          <li>Supermarket Store Simulator</li>
+          <li>Room Merge: Home Design</li>
+          <li>Idle City</li>
+          <li>Idle Restaurant Game</li>
+          <li>Garage Tycoon: Idle Car Empire</li>
+        </ul>
+        <div class="pc-count">gamesodo · JanBark HTML5</div>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="pc-category">📱 Utility / AI Apps</div>
+        <ul class="pc-titles">
+          <li>AI Assistant for Everyday Life (100K+)</li>
+          <li>NoteWave: AI Voice Transcriber</li>
+          <li>Screen Recorder – Record Video</li>
+          <li>Daily Routine Planner PlanEase</li>
+          <li>Unit Converter – Calculator</li>
+        </ul>
+        <div class="pc-count">gamesodo · App Tech Solutions</div>
+      </div>
+
+    </div>
+
+    <!-- Stats row -->
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-num">3</div>
+        <div class="stat-lbl">Google Play Accounts</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">100+</div>
+        <div class="stat-lbl">HTML5 Titles (GameMonetize)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">10M+</div>
+        <div class="stat-lbl">Downloads (Top Title)</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6+</div>
+        <div class="stat-lbl">Genre Categories</div>
+      </div>
+    </div>
+
+    <!-- Platform pills -->
+    <div class="platform-row">
+      <div class="platform-pill">
+        <div class="platform-icon gp">G</div>
+        <div class="platform-info">
+          <span class="platform-name">Key Games LTD</span>
+          <span class="platform-detail">Google Play Developer</span>
+        </div>
+      </div>
+      <div class="platform-pill">
+        <div class="platform-icon gp">G</div>
+        <div class="platform-info">
+          <span class="platform-name">App Tech Solutions</span>
+          <span class="platform-detail">Google Play Developer</span>
+        </div>
+      </div>
+      <div class="platform-pill">
+        <div class="platform-icon gp">G</div>
+        <div class="platform-info">
+          <span class="platform-name">gamesodo</span>
+          <span class="platform-detail">Google Play Developer</span>
+        </div>
+      </div>
+      <div class="platform-pill">
+        <div class="platform-icon html5">H</div>
+        <div class="platform-info">
+          <span class="platform-name">JanBark Technologies</span>
+          <span class="platform-detail">GameMonetize · 100+ HTML5 Titles</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PARTNERSHIP SECTION ══ -->
+  <div class="section">
+    <div class="section-label">Partnership Proposal</div>
+    <div class="section-title"><span>50/50</span> Revenue Share Model</div>
+    <div class="section-body">
+      We're looking for publishers, marketers, and distribution partners to grow our titles globally. You bring the traffic, localisation, and marketing muscle — we bring the games, IP, and development pipeline. Revenue split 50/50 on all monetisation from your channels.
+    </div>
+
+    <div class="deal-box">
+      <div class="deal-card featured">
+        <div class="deal-title">Publisher / Marketer</div>
+        <div class="deal-body">You handle UA, ad networks, store optimisation, and regional marketing. We provide full game assets, SDK integration support, and ongoing updates.</div>
+        <div class="deal-split">
+          <div class="split-bar"></div>
+          <div class="split-lbl">50% Revenue</div>
+        </div>
+        <ul class="deal-list">
+          <li>Access to full catalogue (mobile + HTML5)</li>
+          <li>White-label / co-branding available</li>
+          <li>SDK integration (AdMob, Unity, IronSource)</li>
+          <li>Monthly revenue reporting</li>
+          <li>Dedicated account manager</li>
+        </ul>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-title">Distribution Partner</div>
+        <div class="deal-body">Embed our HTML5 titles on your gaming portal, app store, or content platform. We handle game updates; you handle the audience.</div>
+        <div class="deal-split">
+          <div class="split-bar"></div>
+          <div class="split-lbl">50% Revenue</div>
+        </div>
+        <ul class="deal-list">
+          <li>100+ HTML5 titles, instant embed</li>
+          <li>GameMonetize API compatible</li>
+          <li>Programmatic ad integration</li>
+          <li>Custom branded game collections</li>
+          <li>Performance dashboards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">Why Partner With Us</div>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-num" style="font-size:22px; color: var(--gold)">✓ Low Risk</div>
+        <div class="stat-lbl">Proven live titles, real store presence</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="font-size:22px; color: var(--gold)">✓ Fast Launch</div>
+        <div class="stat-lbl">Games ready to scale — no development wait</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num" style="font-size:22px; color: var(--gold)">✓ Multi-Platform</div>
+        <div class="stat-lbl">Android + HTML5 + future iOS pipeline</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CONTACT / CTA ══ -->
+  <div class="contact-section">
+    <div>
+      <div class="contact-cta-title">Let's Build<br><span>Together at GGIC 2026</span></div>
+      <div class="contact-desc">
+        Schedule a one-on-one meeting at the Global Game Industry CEO Conference, October 22 · Guangzhou. Bring your portfolio — we'll bring ours. Let's talk numbers.
+      </div>
+
+      <div class="contact-details">
+        <div class="contact-row">
+          <div class="contact-row-icon">✉</div>
+          <div>
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-text">haseeb87@yahoo.com</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">🌐</div>
+          <div>
+            <span class="contact-row-label">Google Play</span>
+            <span class="contact-row-text">Key Games LTD · App Tech Solutions · gamesodo</span>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-row-icon">🎮</div>
+          <div>
+            <span class="contact-row-label">HTML5 Games</span>
+            <span class="contact-row-text">gamemonetize.com/games?company=JanBarkTechnologies</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-box">
+      <!-- Faux QR for visual purposes -->
+      <div class="qr-placeholder">
+        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- QR-style pattern (decorative) -->
+          <rect x="4" y="4" width="20" height="20" rx="2" fill="none" stroke="#00D4C8" stroke-width="2"/>
+          <rect x="8" y="8" width="12" height="12" rx="1" fill="#00D4C8"/>
+          <rect x="48" y="4" width="20" height="20" rx="2" fill="none" stroke="#00D4C8" stroke-width="2"/>
+          <rect x="52" y="8" width="12" height="12" rx="1" fill="#00D4C8"/>
+          <rect x="4" y="48" width="20" height="20" rx="2" fill="none" stroke="#00D4C8" stroke-width="2"/>
+          <rect x="8" y="52" width="12" height="12" rx="1" fill="#00D4C8"/>
+          <!-- Data modules -->
+          <rect x="28" y="4" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="34" y="4" width="4" height="4" fill="#00D4C8" opacity="0.5"/>
+          <rect x="40" y="4" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="28" y="10" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="34" y="10" width="4" height="4" fill="#00D4C8" opacity="0.9"/>
+          <rect x="40" y="10" width="4" height="4" fill="#00D4C8" opacity="0.3"/>
+          <rect x="28" y="16" width="4" height="4" fill="#00D4C8" opacity="0.6"/>
+          <rect x="34" y="16" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="40" y="16" width="4" height="4" fill="#F5A623" opacity="0.7"/>
+          <rect x="4" y="28" width="4" height="4" fill="#00D4C8" opacity="0.5"/>
+          <rect x="4" y="34" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="4" y="40" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="10" y="28" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="10" y="34" width="4" height="4" fill="#00D4C8" opacity="0.3"/>
+          <rect x="16" y="28" width="4" height="4" fill="#F5A623" opacity="0.6"/>
+          <rect x="28" y="28" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="34" y="28" width="4" height="4" fill="#00D4C8" opacity="0.5"/>
+          <rect x="40" y="28" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="46" y="28" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="52" y="28" width="4" height="4" fill="#00D4C8" opacity="0.6"/>
+          <rect x="58" y="28" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="64" y="28" width="4" height="4" fill="#00D4C8" opacity="0.3"/>
+          <rect x="28" y="34" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="40" y="34" width="4" height="4" fill="#00D4C8" opacity="0.9"/>
+          <rect x="52" y="34" width="4" height="4" fill="#F5A623" opacity="0.5"/>
+          <rect x="64" y="34" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="28" y="40" width="4" height="4" fill="#00D4C8" opacity="0.6"/>
+          <rect x="34" y="40" width="4" height="4" fill="#00D4C8" opacity="0.3"/>
+          <rect x="46" y="40" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="58" y="40" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="28" y="46" width="4" height="4" fill="#00D4C8" opacity="0.5"/>
+          <rect x="34" y="52" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="40" y="46" width="4" height="4" fill="#00D4C8" opacity="0.9"/>
+          <rect x="46" y="52" width="4" height="4" fill="#F5A623" opacity="0.6"/>
+          <rect x="52" y="46" width="4" height="4" fill="#00D4C8" opacity="0.3"/>
+          <rect x="64" y="46" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="28" y="58" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+          <rect x="34" y="64" width="4" height="4" fill="#00D4C8" opacity="0.6"/>
+          <rect x="46" y="58" width="4" height="4" fill="#00D4C8" opacity="0.8"/>
+          <rect x="52" y="64" width="4" height="4" fill="#00D4C8" opacity="0.5"/>
+          <rect x="58" y="58" width="4" height="4" fill="#00D4C8" opacity="0.7"/>
+          <rect x="64" y="64" width="4" height="4" fill="#00D4C8" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="qr-caption">Scan to View<br>Portfolio</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-bar">
+    <span class="footer-copy">© 2026 JanBark Technologies · All Rights Reserved</span>
+    <span class="footer-conf">GGIC 2026 · Guangzhou · Oct 22</span>
+  </div>
+
+</div>
+
+<div class="print-note">↑ BROCHURE PREVIEW — For print, use browser File → Print → Save as PDF</div>
+
+</body>
+</html>
