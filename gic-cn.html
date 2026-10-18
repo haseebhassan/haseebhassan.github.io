@@ -377,6 +377,29 @@
     .timeline-row { flex-direction: column; gap: 6px; }
     .footer { flex-direction: column; gap: 4px; text-align: center; }
   }
+
+  /* LINK CARDS */
+  .links-grid { display: flex; flex-direction: column; gap: 8px; }
+  .link-card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .link-card:hover { border-color: var(--teal); background: #f0f6ff; }
+  .link-card.highlight-link { border-color: var(--gold-light); background: #fffbf4; }
+  .link-card.highlight-link:hover { border-color: var(--gold); background: #fff3e0; }
+  .link-icon { font-size: 18px; flex-shrink: 0; width: 32px; text-align: center; }
+  .link-info { flex: 1; }
+  .link-title { font-size: 13px; font-weight: 700; color: var(--text); }
+  .link-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+  .link-arrow { font-size: 16px; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .link-card.highlight-link .link-arrow { color: var(--gold); }
+
 </style>
 </head>
 <body>
@@ -509,6 +532,65 @@
           <div class="port-name">客户定制工程</div>
           <div class="port-dl">按需 <span>全平台</span></div>
         </div>
+      </div>
+    </div>
+
+
+    <!-- PORTFOLIO LINKS -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">🔗 在线作品集链接</div>
+        <div class="section-tag">立即查看</div>
+      </div>
+      <div class="links-grid">
+        <a class="link-card" href="https://gamemonetize.com/games?company=JanBarkTechnologies#games" target="_blank" rel="noopener">
+          <div class="link-icon">🎮</div>
+          <div class="link-info">
+            <div class="link-title">HTML5 游戏合集</div>
+            <div class="link-sub">GameMonetize · JanBark Technologies</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
+        <a class="link-card" href="https://play.google.com/store/apps/developer?id=Mishi+Games+Studio" target="_blank" rel="noopener">
+          <div class="link-icon">▶</div>
+          <div class="link-info">
+            <div class="link-title">Google Play · Mishi Games Studio</div>
+            <div class="link-sub">play.google.com</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
+        <a class="link-card" href="https://play.google.com/store/apps/developer?id=Key+Games+LTD" target="_blank" rel="noopener">
+          <div class="link-icon">▶</div>
+          <div class="link-info">
+            <div class="link-title">Google Play · Key Games LTD</div>
+            <div class="link-sub">play.google.com</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
+        <a class="link-card" href="https://play.google.com/store/apps/developer?id=App+Tech+Solutions" target="_blank" rel="noopener">
+          <div class="link-icon">▶</div>
+          <div class="link-info">
+            <div class="link-title">Google Play · App Tech Solutions</div>
+            <div class="link-sub">play.google.com</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
+        <a class="link-card" href="https://play.google.com/store/apps/developer?id=gamesodo" target="_blank" rel="noopener">
+          <div class="link-icon">▶</div>
+          <div class="link-info">
+            <div class="link-title">Google Play · Gamesodo</div>
+            <div class="link-sub">play.google.com</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
+        <a class="link-card highlight-link" href="https://docs.google.com/spreadsheets/d/1mfx7UlsRIv0gy8pigGQCrPyjFuYy2FXrWQFVQ0cOTpk/edit?usp=drivesdk" target="_blank" rel="noopener">
+          <div class="link-icon">📊</div>
+          <div class="link-info">
+            <div class="link-title">完整游戏目录（电子表格）</div>
+            <div class="link-sub">Google Sheets · 全产品数据</div>
+          </div>
+          <div class="link-arrow">→</div>
+        </a>
       </div>
     </div>
 
