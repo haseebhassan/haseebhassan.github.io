@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>简树科技 东博会2026战略方案</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #1a2f5e;
+    --teal: #1e6fa5;
+    --teal-light: #2a85c5;
+    --gold: #e8852a;
+    --gold-light: #f0a050;
+    --white: #ffffff;
+    --off-white: #f8f9fc;
+    --text: #1a1a2e;
+    --text-mid: #3a4a6a;
+    --text-muted: #6b7a99;
+    --border: #d0d8ea;
+    --card-bg: #ffffff;
+    --tag-regional: #e8f4fd;
+    --tag-regional-text: #1e6fa5;
+    --tag-huajing: #fef3e2;
+    --tag-huajing-text: #c96a10;
+    --tag-studio: #fdeaea;
+    --tag-studio-text: #c0392b;
+    --tag-perf: #eafdf0;
+    --tag-perf-text: #1a7a40;
+    --tag-lead: #e8f4fd;
+    --tag-lead-text: #1e6fa5;
+    --tag-nda: #fef3e2;
+    --tag-nda-text: #c96a10;
+    --tag-loi: #eafdf0;
+    --tag-loi-text: #1a7a40;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 14px;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 2px 32px rgba(0,0,0,0.08);
+  }
+
+  /* ── HEADER HERO ── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 28px 36px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(30,111,165,0.18);
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .brand-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .event-badge {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
+    font-weight: 400;
+  }
+
+  /* ── META BAR ── */
+  .meta-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+  }
+  .meta-cell {
+    padding: 14px 18px;
+    border-right: 1px solid var(--border);
+  }
+  .meta-cell:last-child { border-right: none; }
+  .meta-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .meta-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── CONTENT BODY ── */
+  .body-content {
+    padding: 0 36px 36px;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    margin-top: 30px;
+  }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* ── INTRO PARAGRAPH ── */
+  .intro-para {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+  .intro-para strong { color: var(--text); }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .stat-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 10px;
+    text-align: center;
+    background: var(--off-white);
+  }
+  .stat-num {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── CAPABILITY CARDS ── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .cap-card {
+    border: 1.5px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: var(--card-bg);
+  }
+  .cap-card:nth-child(2) { border-left-color: var(--gold); }
+  .cap-card:nth-child(3) { border-left-color: var(--gold); }
+  .cap-card:nth-child(4) { border-left-color: var(--teal); }
+  .cap-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cap-body {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* ── OBJECTIVES TABLE ── */
+  .obj-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .obj-table thead {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .obj-table th {
+    padding: 11px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 0.03em;
+  }
+  .obj-table td {
+    padding: 12px 14px;
+    font-size: 12.5px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-mid);
+  }
+  .obj-table tr:last-child td { border-bottom: none; }
+  .obj-table tr:nth-child(even) td { background: var(--off-white); }
+  .obj-title { font-weight: 700; color: var(--text); font-size: 13px; }
+  .tag {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag-regional { background: var(--tag-regional); color: var(--tag-regional-text); }
+  .tag-huajing  { background: var(--tag-huajing);  color: var(--tag-huajing-text); }
+  .tag-studio   { background: var(--tag-studio);   color: var(--tag-studio-text); }
+  .tag-perf     { background: var(--tag-perf);     color: var(--tag-perf-text); }
+
+  /* ── TIMELINE ROWS ── */
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .timeline-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .time-badge {
+    flex-shrink: 0;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    min-width: 110px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .time-content {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .time-content strong { color: var(--text); }
+
+  /* ── PITCH BOX ── */
+  .pitch-box {
+    background: #fffbf4;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .pitch-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .pitch-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* ── CHECKLIST GRID ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .check-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: var(--card-bg);
+  }
+  .check-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .check-body {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* ── ROADMAP TABLE ── */
+  .road-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .road-table thead {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .road-table th {
+    padding: 11px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 0.03em;
+  }
+  .road-table td {
+    padding: 12px 14px;
+    font-size: 12.5px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+    color: var(--text-mid);
+  }
+  .road-table tr:last-child td { border-bottom: none; }
+  .road-table tr:nth-child(even) td { background: var(--off-white); }
+  .tl-lbl { font-weight: 700; color: var(--text); }
+  .tag-lead { background: var(--tag-lead); color: var(--tag-lead-text); }
+  .tag-nda  { background: var(--tag-nda);  color: var(--tag-nda-text); }
+  .tag-loi  { background: var(--tag-loi);  color: var(--tag-loi-text); }
+
+  /* ── PAGE DIVIDER ── */
+  .page-divider {
+    border: none;
+    border-top: 2px dashed var(--border);
+    margin: 36px 0 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 14px 36px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .footer-brand { color: var(--teal); font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 620px) {
+    .hero { padding: 20px 18px; }
+    .hero h1 { font-size: 20px; }
+    .body-content { padding: 0 18px 28px; }
+    .meta-bar { grid-template-columns: 1fr 1fr; }
+    .meta-cell:nth-child(2) { border-right: none; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .cap-grid, .check-grid { grid-template-columns: 1fr; }
+    .timeline-row { flex-direction: column; gap: 6px; }
+    .footer { flex-direction: column; gap: 4px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-top">
+      <div class="brand-pill">
+        <span class="brand-dot"></span>
+        简树科技
+      </div>
+      <div class="event-badge">东博会2026战略</div>
+    </div>
+    <h1>中国—东盟游戏峰会<br>暨合作伙伴战略</h1>
+    <div class="hero-sub">正式出席及工作室代表方案 | 全球发行与联合开发</div>
+  </div>
+
+  <!-- META BAR -->
+  <div class="meta-bar">
+    <div class="meta-cell">
+      <div class="meta-label">目标活动</div>
+      <div class="meta-value">东博会·华竞论坛</div>
+    </div>
+    <div class="meta-cell">
+      <div class="meta-label">日期与日程</div>
+      <div class="meta-value">9月19日 · 全天</div>
+    </div>
+    <div class="meta-cell">
+      <div class="meta-label">活动场馆</div>
+      <div class="meta-value">广西南宁 A 中心</div>
+    </div>
+    <div class="meta-cell">
+      <div class="meta-label">主办联合体</div>
+      <div class="meta-value">广西华竞拓界科技</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-content">
+
+    <!-- 1. Strategic Context -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">1. 战略背景与市场契合度</div>
+        <div class="section-tag">机遇分析</div>
+      </div>
+      <p class="intro-para">
+        <em>中国—东盟游戏出海平台合作交流会（东博会·华竞游戏出海平台合作交流会）</em>汇聚了加速推动游戏进入东南亚市场的顶级发行商、广告联盟及渠道分销商。代表<strong>简树科技</strong>出席本次活动，将使我们成熟的移动游戏目录与世界级工程师团队直接面对越南、印度尼西亚、泰国、马来西亚及菲律宾的区域决策者。
+      </p>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num">70+</div>
+          <div class="stat-lbl">专业开发者</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5000万+</div>
+          <div class="stat-lbl">全球下载量</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">100+</div>
+          <div class="stat-lbl">已上线产品</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">95%</div>
+          <div class="stat-lbl">代码交付质量</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Value Proposition -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">2. 简树科技核心价值主张</div>
+        <div class="section-tag">工作室能力</div>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-title">⚡ 精英工程与 Unity/Unreal 专业能力</div>
+          <div class="cap-body">完整的全周期生产基础设施，能将核心玩法机制转化为具备超高帧率和跨设备兼容性的市场就绪产品。</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">📈 数据驱动的留存与变现</div>
+          <div class="cap-body">专有直播运营平衡系统、优化的广告中介（eCPM 收益）及应用内购（IAP）漏斗，为第1/7/30日玩家留存曲线工程化设计。</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">🤝 灵活的联合开发团队</div>
+          <div class="cap-body">即插即用的离岸工程团队，可随时增援需要快速直播运营、QA自动化或移植至国际应用商店的中国开发工作室。</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">🌏 快速本地化与文化适配</div>
+          <div class="cap-body">模块化资源架构，支持快速本地化至东盟语言（印尼语、越南语、泰语），并迅速完成区域合规审核。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Commercial Objectives -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">3. 目标商业合作方向</div>
+        <div class="section-tag">重点交易</div>
+      </div>
+      <table class="obj-table">
+        <thead>
+          <tr>
+            <th>目标方向</th>
+            <th>执行机制</th>
+            <th>目标对象</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="obj-title">东盟联合发行</div></td>
+            <td>授权简树科技现有移动游戏进行区域发行，并在东盟一线应用市场完成本地化分发。</td>
+            <td><span class="tag tag-regional">区域发行商</span></td>
+          </tr>
+          <tr>
+            <td><div class="obj-title">华竞平台接入</div></td>
+            <td>将游戏接入主办方跨境目录，借力区域营销联盟及本地支付通道。</td>
+            <td><span class="tag tag-huajing">广西华竞</span></td>
+          </tr>
+          <tr>
+            <td><div class="obj-title">外包开发与直播运营</div></td>
+            <td>签约简树工程团队，为需要高性价比、高产出开发能力的海外工作室提供支持。</td>
+            <td><span class="tag tag-studio">顶级游戏工作室</span></td>
+          </tr>
+          <tr>
+            <td><div class="obj-title">用户获取与广告中介协同</div></td>
+            <td>与专注于新兴市场高 eCPM 变现的广告网络及中介服务商建立直接合作关系。</td>
+            <td><span class="tag tag-perf">效果广告网络</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="page-divider">
+
+    <!-- 4. On-Site Execution -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">4. 现场战术执行方案</div>
+        <div class="section-tag">议程与规范</div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-row">
+          <div class="time-badge">09:00 – 10:30</div>
+          <div class="time-content"><strong>注册、展览与主办方互动：</strong>与广西华竞拓界科技的主办方及高层管理人员建立直接联系。将简树定位为高执行力工作室，积极向其生态提供经过验证的游戏产品。</div>
+        </div>
+        <div class="timeline-row">
+          <div class="time-badge">10:30 – 12:30</div>
+          <div class="time-content"><strong>主题演讲与游戏出海政策简报：</strong>获取跨境收益汇款、本地IP版权注册、东盟内容敏感度及渠道费用结构等监管情报。</div>
+        </div>
+        <div class="timeline-row">
+          <div class="time-badge">13:30 – 16:00</div>
+          <div class="time-content"><strong>B2B 配对洽谈与真机演示：</strong>在专属移动设备上面向区域发行商及效果广告代理商进行交互式离线演示。</div>
+        </div>
+        <div class="timeline-row">
+          <div class="time-badge">16:00 – 结束</div>
+          <div class="time-content"><strong>高管VIP交流与管道最终确认：</strong>通过微信二维码完成数字名片交换；将即时合作意向录入简树 CRM 系统并分类跟进。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Elevator Pitch -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">5. 核心会议推介架构</div>
+        <div class="section-tag">口头表达</div>
+      </div>
+      <div class="pitch-box">
+        <div class="pitch-label">🎯 30秒电梯推介（中英双语备稿）</div>
+        <div class="pitch-text">
+          "简树科技是一家高产能游戏开发公司，拥有超过70名内部工程师与创作者，全球下载量达数千万。我们开发高留存、可变现的移动游戏，并提供世界级工程团队服务。我们此行的目的是与发行商及华竞平台合作，共同发行现有爆款游戏，并联合开发为不断扩张的东盟及全球市场量身定制的下一代产品。"
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Checklist -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">6. 所需资料与就绪清单</div>
+        <div class="section-tag">准备工作</div>
+      </div>
+      <div class="check-grid">
+        <div class="check-card">
+          <div class="check-title">📁 双语工作室简报（中/英）</div>
+          <div class="check-body">高冲击力单页文件，重点展示简树最佳表现游戏、留存图表、核心技术栈及合作模式。</div>
+        </div>
+        <div class="check-card">
+          <div class="check-title">📱 离线可玩构建版本</div>
+          <div class="check-body">至少两台专属移动测试设备，预装游戏构建版本及60帧玩法宣传片，无需网络连接即可运行。</div>
+        </div>
+        <div class="check-card">
+          <div class="check-title">💬 企业微信二维码门户</div>
+          <div class="check-body">已完整配置的微信名片，附带作品集下载链接，可与中国工作室负责人及发行商实现无摩擦社交。</div>
+        </div>
+        <div class="check-card">
+          <div class="check-title">📑 快速通道NDA与条款摘要</div>
+          <div class="check-body">标准化评估协议与条款，可在72小时内快速推进技术构建评估及测试发行试验。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Roadmap -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">7. 会后交易转化路线图</div>
+        <div class="section-tag">潜在客户跟进</div>
+      </div>
+      <table class="road-table">
+        <thead>
+          <tr>
+            <th>时间节点</th>
+            <th>执行步骤</th>
+            <th>可量化成果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="tl-lbl">第1–2天</div></td>
+            <td>通过微信和邮件发送个性化跟进内容，附带工作室简报及定制游戏链接。</td>
+            <td><span class="tag tag-lead">分类潜客管道</span></td>
+          </tr>
+          <tr>
+            <td><div class="tl-lbl">第3–7天</div></td>
+            <td>与有意向的发行合作伙伴举办线上深度演示，并在NDA保护下交付测试构建版本。</td>
+            <td><span class="tag tag-nda">已签评估NDA</span></td>
+          </tr>
+          <tr>
+            <td><div class="tl-lbl">第8–14天</div></td>
+            <td>提交联合发行合同条款、收益分成模式及联合生产里程碑方案。</td>
+            <td><span class="tag tag-loi">条款摘要与试点LOI</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /body-content -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span><span class="footer-brand">简树科技</span> · 国际业务拓展与发行部门</span>
+    <span>中国—东盟代表方案</span>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>
